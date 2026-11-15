@@ -65,9 +65,14 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
 def one_hot_encode(labels):
-    sorted_cat = np.unique(labels)
-    ohe = OneHotEncoder(categories=[sorted_cat], dtype=np.float64, sparse_output=False)
-    return ohe.fit_transform(labels.reshape(-1, 1))
+    # sorted_cat = np.unique(labels)
+    # ohe = OneHotEncoder(categories=[sorted_cat], dtype=np.float64, sparse_output=False)
+    # return ohe.fit_transform(labels.reshape(-1, 1))
+
+    categories, inverse = np.unique(labels, return_inverse=True)
+    one_hot = np.zeros((labels.size, categories.size))
+    one_hot[np.arange(labels.size), inverse] = 1
+    return one_hot
 
 # Step 7 - fit_standardizer (not yet solved)
 # TODO: implement
