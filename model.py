@@ -90,9 +90,11 @@ def apply_standardizer(X, mean, std):
 # Step 9 - add_bias_column
 def add_bias_column(X):
     # TODO: Prepend a column of ones to a 2-D feature matrix X...
-    bias = np.ones((X.shape[0], 1))
-    new_X = np.append(bias, X, axis=1)
-    return new_X
+    # bias = np.ones((X.shape[0], 1))
+    # new_X = np.append(bias, X, axis=1)
+    # return new_X
+
+    return np.concatenate((np.ones((X.shape[0], 1)), X), axis=1)
 
 # Step 10 - make_shuffled_indices (not yet solved)
 # TODO: implement
