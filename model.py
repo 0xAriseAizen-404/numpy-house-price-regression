@@ -60,8 +60,14 @@ def append_column(X, col):
     new_X = np.append(new_X, col.reshape(-1, 1), axis=1)
     return new_X
 
-# Step 6 - one_hot_encode (not yet solved)
-# TODO: implement
+# Step 6 - one_hot_encode
+import numpy as np
+from sklearn.preprocessing import OneHotEncoder
+
+def one_hot_encode(labels):
+    sorted_cat = np.unique(labels)
+    ohe = OneHotEncoder(categories=[sorted_cat], dtype=np.float64, sparse_output=False)
+    return ohe.fit_transform(labels.reshape(-1, 1))
 
 # Step 7 - fit_standardizer (not yet solved)
 # TODO: implement
