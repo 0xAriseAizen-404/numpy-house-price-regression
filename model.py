@@ -80,7 +80,7 @@ def fit_standardizer(X):
     mean = np.mean(X, axis=0)
     std = np.std(X, axis=0)
     std = np.where(std == 0, 1.0, std)
-    return (mean, std)
+    return mean, std
 
 # Step 8 - apply_standardizer
 def apply_standardizer(X, mean, std):
